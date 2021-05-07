@@ -28,14 +28,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers( "/", "/account/register" ,"/css/**" ).permitAll()
+//				.antMatchers( "/", "/account/**" ,"/css/**" ,"/board/**" ,"/js/**"   ).hasAnyRole("ROLE_ADMIN","ROLE_USER","ROLE_MANAGER")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/account/login")
+//				.defaultSuccessUrl("/")
 				.permitAll()
 				.and()
 				.logout()
 				.permitAll();
+
 	}
 
     @Autowired
