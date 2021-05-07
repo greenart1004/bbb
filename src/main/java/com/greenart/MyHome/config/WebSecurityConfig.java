@@ -26,8 +26,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+			//.csrf().disable()                       // csrf()은 보안을 위해서 security가 개발자와 별개로 키값을 전달하고 받아서 확인하는등 보안에 유리 
 			.authorizeRequests()
-				.antMatchers( "/", "/account/register" ,"/css/**" ).permitAll()
+				.antMatchers( "/", "/account/register" ,"/css/**" ,"/api/**" ).permitAll()
 //				.antMatchers( "/", "/account/**" ,"/css/**" ,"/board/**" ,"/js/**"   ).hasAnyRole("ROLE_ADMIN","ROLE_USER","ROLE_MANAGER")
 				.anyRequest().authenticated()
 				.and()
@@ -55,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   
                 .authoritiesByUsernameQuery("select u.username, r.name "
                         + "from user_role ur inner join User u on ur.user_id = u.id "
-                        + "inner join Role r on ur.role_id = r.id "
+                                          + "inner join Role r on ur.role_id = r.id "
                         + "where u.username = ?");
     }
 

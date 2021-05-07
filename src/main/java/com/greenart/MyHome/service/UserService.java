@@ -27,15 +27,10 @@ public class UserService {
         
         user.setPassword(encodedPassword);
         user.setEnabled(true);      // 기본적으로 회원가입을하면 enable로 활성화시킴
-        System.out.println("user ---------------------------------------" + user);       
     	Role role = new Role();
         role.setId(1l);              // 권한을 기본적으로 role 권한에서 id=1번인 user로 하드코딩 설정함
-        System.out.println("role ---------------------------------------" + role);
-
-        
         user.getRoles().add(role);
-        System.out.println("user ---------------------------------------" + user);      
-        
+   
         return userRepository.save(user);
     }
 
