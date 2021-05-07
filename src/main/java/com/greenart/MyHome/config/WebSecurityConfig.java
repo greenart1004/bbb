@@ -50,12 +50,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder())              // 비빌번호 암호를 하는 부분
                 
                 .usersByUsernameQuery("select username, password, enabled "    // username, password 를  조회하는 쿼리부분          // Authentication    로그인관련(인증처리관련)
-                        + "from user "                                                                                     // Authroization     권한에관한설정
+                        + "from User "                                                                                     // Authroization     권한에관한설정
                         + "where username = ?")                                  // 자동으로 ?에 username이 들어감
   
                 .authoritiesByUsernameQuery("select u.username, r.name "
-                        + "from user_role ur inner join user u on ur.user_id = u.id "
-                        + "inner join role r on ur.role_id = r.id "
+                        + "from user_role ur inner join User u on ur.user_id = u.id "
+                        + "inner join Role r on ur.role_id = r.id "
                         + "where u.username = ?");
     }
 
