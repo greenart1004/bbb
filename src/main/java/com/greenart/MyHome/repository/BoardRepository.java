@@ -14,7 +14,6 @@ import com.greenart.MyHome.model.Board;
 public interface BoardRepository extends JpaRepository<Board, Long> {
 
     List<Board> findByTitle(String title);
-    List<Board> findByContent(String content);
     List<Board> findByTitleOrContent(String title, String content);
 
 	

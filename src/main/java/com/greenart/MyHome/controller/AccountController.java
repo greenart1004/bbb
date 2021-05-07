@@ -15,29 +15,22 @@ import com.greenart.MyHome.service.UserService;
 @RequestMapping("/account")
 public class AccountController {
 
-	
-	 @Autowired 
-	 private UserService userService;
-	
+    @Autowired
+    private UserService userService;
 
-	@GetMapping("/login")
-	public String login() {
-		return "account/login";
-	}
+    @GetMapping("/login")
+    public String login() {
+        return "account/login";
+    }
 
-	@GetMapping("/register")
-	public String register() {
-		return "account/register";
-	}
+    @GetMapping("/register")
+    public String register() {
+        return "account/register";
+    }
 
-	@PostMapping("/register")
-	public String register(User user) {
-		try {
-		userService.save(user);
-		}
-		catch (DataIntegrityViolationException e) {
-			System.out.println("history already exist");
-		}
-		return "redirect:/";                 // get mapping으로 이동한다.
-	}
+    @PostMapping("/register")
+    public String register(User user) {
+        userService.save(user);
+        return "redirect:/";
+    }
 }
