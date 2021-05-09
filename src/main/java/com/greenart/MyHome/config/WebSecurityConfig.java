@@ -28,9 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			//.csrf().disable()                       // csrf()은 보안을 위해서 security가 개발자와 별개로 키값을 전달하고 받아서 확인하는등 보안에 유리 
 			.authorizeRequests()
-				.antMatchers( "/", "/account/register" ,"/css/**" ,"/api/**" ).permitAll()
+				.antMatchers( "/", "/account/register" ,"/css/**" ,"/api/**","/board/**"  ).permitAll()
 //				.antMatchers( "/", "/account/**" ,"/css/**" ,"/board/**" ,"/js/**"   ).hasAnyRole("ROLE_ADMIN","ROLE_USER","ROLE_MANAGER")
-				.anyRequest().authenticated()
+				.anyRequest().permitAll()
+//				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/account/login")
